@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李晓明 · 个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #FAF7F2;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: #2C2418;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* Hero */
+    .hero { margin-bottom: 3.5rem; }
+
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #8B6F47; margin-bottom: 0.75rem; font-weight: 500;
+    }
+
+    .hero-top { display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+    .hero-text { flex: 1; min-width: 200px; }
+
+    .avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #D4B896;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: #FAF7F2; font-style: italic;
+      flex-shrink: 0;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 600; line-height: 1.1;
+      color: #2C2418; margin-bottom: 0.5rem;
+    }
+    .hero-name em { font-style: italic; color: #C4855A; }
+
+    .hero-tagline {
+      font-size: 1rem; color: #8B6F47; font-weight: 300;
+      line-height: 1.6; max-width: 480px; margin-top: 1rem;
+    }
+
+    .hero-links {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;
+    }
+
+    .link-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 99px;
+      border: 1px solid #D4B896; font-size: 13px;
+      color: #8B6F47; text-decoration: none; background: transparent;
+      transition: background 0.2s, color 0.2s;
+    }
+    .link-pill:hover { background: #8B6F47; color: #FAF7F2; }
+
+    .quote-block {
+      border-left: 3px solid #C4855A; padding: 0.75rem 1rem;
+      background: #F3EDE3; border-radius: 0 6px 6px 0; margin-top: 2rem;
+      font-family: 'Playfair Display', serif; font-size: 0.9rem;
+      color: #6B5030; line-height: 1.6; font-style: italic;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 3rem; }
+
+    .section-label {
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #C4855A; font-weight: 500; margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: #E8DDD1;
+    }
+
+    .about-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; line-height: 1.85;
+      color: #3D2E1F;
+    }
+    .about-text strong { font-weight: 600; color: #C4855A; font-style: italic; }
+
+    /* Education */
+    .edu-item {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 0 1.5rem; padding: 1.25rem 0;
+      border-bottom: 1px solid #EDE5D8;
+    }
+    .edu-item:first-of-type { border-top: 1px solid #EDE5D8; }
+    .edu-year { font-size: 12px; color: #B09070; padding-top: 3px; letter-spacing: 0.05em; }
+    .edu-degree { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: #2C2418; margin-bottom: 2px; }
+    .edu-school { font-size: 13px; color: #8B6F47; }
+    .edu-note { font-size: 12px; color: #B09070; margin-top: 4px; }
+
+    /* Skills */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      padding: 5px 12px; border-radius: 4px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+      background: #EDE5D8; color: #6B5030;
+    }
+    .skill-tag.highlight { background: #C4855A; color: #FAF7F2; }
+
+    /* Publications */
+    .pub-item {
+      padding: 1rem 0 1rem 1rem;
+      border-left: 3px solid #C4855A; margin-bottom: 1rem;
+    }
+    .pub-item:last-child { margin-bottom: 0; }
+    .pub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 600; color: #2C2418;
+      margin-bottom: 3px; line-height: 1.4;
+    }
+    .pub-meta { font-size: 12px; color: #8B6F47; }
+
+    /* Contact */
+    .contact-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 0.5rem; }
+    .contact-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #8B6F47; }
+    .contact-item i { font-size: 16px; color: #C4855A; }
+
+    /* Footer */
+    footer {
+      text-align: center; font-size: 12px; color: #B09070;
+      padding-top: 2rem; border-top: 1px solid #EDE5D8;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 2rem 1.25rem 4rem; }
+      .edu-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .edu-year { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-top">
+      <div class="avatar">李</div>
+      <div class="hero-text">
+        <p class="hero-eyebrow">个人主页 · 研究者</p>
+        <h1 class="hero-name">李晓明<em>.</em></h1>
+        <p class="hero-tagline">电气工程与智能系统研究者，专注于电力系统保护与新能源并网技术，致力于用技术理解世界的运行规律。</p>
+        <div class="hero-links">
+          <a class="link-pill" href="mailto:xiaoming@university.edu.cn">
+            <i class="ti ti-mail" aria-hidden="true"></i>联系我
+          </a>
+          <a class="link-pill" href="#">
+            <i class="ti ti-file-description" aria-hidden="true"></i>简历下载
+          </a>
+          <a class="link-pill" href="https://github.com/" target="_blank">
+            <i class="ti ti-brand-github" aria-hidden="true"></i>GitHub
+          </a>
+          <a class="link-pill" href="https://scholar.google.com/" target="_blank">
+            <i class="ti ti-school" aria-hidden="true"></i>Google Scholar
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="quote-block">
+      "科学的本质在于发现那些隐藏在复杂现象背后的简单规律。"
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">关于我</p>
+    <p class="about-text">
+      我是一名来自某大学的硕士研究生，研究方向聚焦于<strong>电力系统继电保护</strong>与<strong>新能源并网控制</strong>。在导师的指导下，我参与了多个国家级科研项目，对发电机保护、微电网稳定性等领域有较深入的探索。<br><br>
+      课余时间，我喜欢阅读哲学与历史，相信跨领域的思考能为工程问题带来不一样的视角。
+    </p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">教育背景</p>
+    <div class="edu-item">
+      <span class="edu-year">2022—至今</span>
+      <div>
+        <p class="edu-degree">电气工程 · 硕士</p>
+        <p class="edu-school">某某大学电气工程学院</p>
+        <p class="edu-note">研究方向：继电保护与电力系统自动化</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-year">2018—2022</span>
+      <div>
+        <p class="edu-degree">电气工程及其自动化 · 学士</p>
+        <p class="edu-school">某某大学</p>
+        <p class="edu-note">优秀毕业生 · GPA 3.8/4.0</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">研究方向与技能</p>
+    <div class="skills-grid">
+      <span class="skill-tag highlight">继电保护</span>
+      <span class="skill-tag highlight">发电机保护</span>
+      <span class="skill-tag highlight">新能源并网</span>
+      <span class="skill-tag">MATLAB / Simulink</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">PSCAD</span>
+      <span class="skill-tag">电力系统分析</span>
+      <span class="skill-tag">微电网控制</span>
+      <span class="skill-tag">数据分析</span>
+      <span class="skill-tag">LaTeX</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">论文与成果</p>
+    <div class="pub-item">
+      <p class="pub-title">基于自适应阈值的发电机定子接地保护方案研究</p>
+      <p class="pub-meta">《电力系统自动化》· 2024 · 第一作者</p>
+    </div>
+    <div class="pub-item">
+      <p class="pub-title">微电网孤岛运行模式下的频率稳定控制策略</p>
+      <p class="pub-meta">IEEE ISCAS · 2023 · 第二作者</p>
+    </div>
+    <div class="pub-item">
+      <p class="pub-title">新能源高渗透率下继电保护适应性分析</p>
+      <p class="pub-meta">国家自然科学基金项目报告 · 2023</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">联系方式</p>
+    <div class="contact-row">
+      <span class="contact-item"><i class="ti ti-mail"></i>xiaoming@university.edu.cn</span>
+      <span class="contact-item"><i class="ti ti-map-pin"></i>北京 · 中国</span>
+      <span class="contact-item"><i class="ti ti-brand-wechat"></i>WeChat: lixm_research</span>
+    </div>
+  </div>
+
+  <footer>© 2026 李晓明 · 用热爱构建</footer>
+
+</div>
+</body>
+</html>
